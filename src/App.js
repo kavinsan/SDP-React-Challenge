@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ImagePanel from "./components/ImagePanel"
 import './App.css';
 
 class App extends Component {
+  state = {
+    visible: true,
+    author: "Kavinsan Thavanesan"
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.visisble ? <ImagePanel author={this.state.author}/> : null}
+        <button onClick={()=> {
+          this.setState({visisble: true})
+        } } className="App-btn">ON</button>
+
+        <button onClick={()=> {
+          this.setState({visisble: false})
+        } } className="App-btn">OFF</button>
       </div>
     );
   }
